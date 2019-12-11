@@ -98,4 +98,17 @@ describe('SignUpForm', () => {
 
     expect(wrapper.instance().handleOnChange).toBeCalledWith(mockEvent);
   })
+
+  it('Should call the handleOnChange event when the email input changes', () => {
+    const mockEvent = {
+      target: {
+        value: 'mock value'
+      }
+    }
+      wrapper.instance().handleOnChange = jest.fn();
+
+    wrapper.find('#signupform__input--password').simulate('change', mockEvent);
+
+    expect(wrapper.instance().handleOnChange).toBeCalledWith(mockEvent);
+  })
 })
