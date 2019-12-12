@@ -1,8 +1,10 @@
 import React from 'react';
 import './SignUpForm.scss'
+import { connect } from 'react-redux'
+import {CreateUserThunk} from '../../Thunks/UserThunks/CreateUserThunk'
 
 
-export default class SignUpForm extends React.Component {
+export class SignUpForm extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -17,6 +19,19 @@ export default class SignUpForm extends React.Component {
 
   handleOnChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
+  }
+
+  handleCreateUser = (e) => {
+    e.preventDefault()
+    const user = {
+      name: this.state.name,
+      userName: this.state.userName,
+      email: this.state.email,
+      phoneNumber: this.state.phoneNumber,
+      password: this.state.password,
+      confirmPassword: this.state.confirmPassword
+    }
+    this.props.createUser(user)
   }
   render(){
     return(
@@ -79,9 +94,16 @@ export default class SignUpForm extends React.Component {
         <button
           className='signupform__submitbtn'
           placeholder='Submit'
-          type='submit'>
+          type='submit'
+          onClick={(e) => this.handleCreateUser(e)}>
         </button>
       </form>
     )
   }
 }
+
+export const mapDispatchToProps = dispatch => ({
+  createUser: (user) => dispatch(CreateUserThunk(user))
+});
+
+export default connect(null, mapDispatchToProps)(SignUpForm);
