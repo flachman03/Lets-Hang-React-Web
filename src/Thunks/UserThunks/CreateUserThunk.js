@@ -1,4 +1,5 @@
 import { addUser } from '../../Actions/UserActions'
+import { hasErrored } from '../../Actions';
 
 export const CreateUserThunk = userInfo => {
   const url = 'https://localhost:5001/api/v1/user'
@@ -19,7 +20,7 @@ export const CreateUserThunk = userInfo => {
       return user;
     }
     catch(error) {
-      console.log(error);
+      dispatch(hasErrored(error));
     }
   }
 
