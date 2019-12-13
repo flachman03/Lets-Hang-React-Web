@@ -32,7 +32,6 @@
   outline: none;
   padding-left: 1%;
   font-size: 1rem;
-  // opacity: .7;
   color: white;
   &:hover {
     box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
@@ -47,12 +46,12 @@
 }
 
 .loginform__submitbtn {
-  width: 33%;
+  width: 25%;
   height: 55px;
   border-radius: 40px;
   border: none;
   outline: none;
-  margin-top: 19px;
+  margin-top: 10px;
   background-color: #c6ffca;
   font-size: 1rem;
   color: black;
