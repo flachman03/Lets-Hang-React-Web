@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import {CreateUserThunk} from '../../Thunks/UserThunks/CreateUserThunk'
 
 
-export class SignUpForm extends React.Component {
+export class SignUpForm extends React.PureComponent {
   constructor() {
     super();
     this.state = {
