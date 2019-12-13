@@ -18,7 +18,8 @@ export const CreateUserThunk = userInfo => {
       return user;
     }
     catch(error) {
-      dispatch(hasErrored(error));
+      dispatch(hasErrored(error))
+      throw new Error('User Not Found');
     }
   }
 
