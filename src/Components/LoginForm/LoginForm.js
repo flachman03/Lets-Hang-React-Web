@@ -52,7 +52,7 @@ export class LoginForm extends React.PureComponent {
           placeholder="Login"
           type="submit"
           onClick={e => this.handleCreateUser(e)}
-        ></button>
+        >Login</button>
       </form>
     );
   }
