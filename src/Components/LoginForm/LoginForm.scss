@@ -2,45 +2,62 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   width: 100%;
   height: 100vh;
+  background-image: url("https://live.staticflickr.com/5319/30089806612_93d2b2d655_k.jpg");
+  background-position: 50% 35%;
+  background-size: 100%;
+  padding-bottom: 10vh;
 }
 
 .loginform__input {
   width: 40%;
-  height: 50px;
+  height: 55px;
   border-radius: 40px;
   border: 1px solid #77ea7f;
+  background: none;
   margin-bottom: 15px;
   outline: none;
   padding-left: 1%;
   font-size: 1rem;
+  opacity: .7;
+  color: white;
   &:hover {
     box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
     box-shadow: 0 1px 6px 0 rgba(119, 234, 127, 0.78);
+    opacity: 1;
   }
 }
 
 .loginform__input::placeholder {
   font-size: 1rem;
-  color: darkgray;
+  color: white;
 }
 
 .loginform__submitbtn {
   width: 30%;
-  height: 50px;
+  height: 55px;
   border-radius: 40px;
   border: none;
   outline: none;
   margin-top: 10px;
   background-color: #c6ffca;
   font-size: 1rem;
-  color: darkgray;
+  color: black;
+  opacity: .7;
   &:hover {
     cursor: pointer;
     color: white;
     background-color: #77ea7f;
     box-shadow: 0 1px 6px 0 rgba(119, 234, 127, 0.48);
+    opacity: 1;
   }
+}
+
+.loginform__message {
+  color: white;
+  font-size: 1rem;
+  font-weight: 100;
+  margin-top: 20px;
 }

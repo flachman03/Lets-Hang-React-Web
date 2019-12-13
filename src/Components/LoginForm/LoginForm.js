@@ -34,7 +34,7 @@ export class LoginForm extends React.PureComponent {
           id="loginform__input--username"
           type="text"
           name="username"
-          placeholder="Username or Email"
+          placeholder="Username"
           value={this.state.username}
           onChange={e => this.handleOnChange(e)}
         ></input>
@@ -52,7 +52,12 @@ export class LoginForm extends React.PureComponent {
           placeholder="Login"
           type="submit"
           onClick={e => this.handleCreateUser(e)}
-        >Login</button>
+        >
+          Login
+        </button>
+        <h3 className="loginform__message">
+          Don't have an account? Sign up here.
+        </h3>
       </form>
     );
   }
