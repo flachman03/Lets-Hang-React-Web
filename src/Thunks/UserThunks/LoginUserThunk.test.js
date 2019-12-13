@@ -1,11 +1,11 @@
-import { CreateUserThunk } from './CreateUserThunk'
+import { LoginUserThunk } from './LoginUserThunk'
 
-describe('CreateUserThunk', () => {
+describe('LoginUserThunk', () => {
   let mockDispatch, mockResponse
   beforeEach(() => {
-    mockDispatch = jest.fn();
+    mockDispatch = jest.fn()
     mockResponse = {
-      name: 'Ryan'
+      title: 'Hang at Pub'
     }
     window.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve({
@@ -15,9 +15,9 @@ describe('CreateUserThunk', () => {
   })
 
   it('Should return a dispatch function', async () => {
-    await CreateUserThunk()(mockDispatch);
+    await LoginUserThunk()(mockDispatch)
 
-    expect(mockDispatch).toHaveBeenCalled()
+    expect(mockDispatch).toHaveBeenCalled();
   })
 
   it('Happy Path: Should call the addUser action', async () => {
@@ -26,22 +26,22 @@ describe('CreateUserThunk', () => {
       data: mockResponse
     }
 
-    await CreateUserThunk(mockResponse)(mockDispatch)
+    await LoginUserThunk(mockResponse)(mockDispatch)
 
     expect(mockDispatch).toHaveBeenCalledWith(mockAction);
   })
 
-  it('Sad Path: Should cal the hasErrored action', async () => {
+  it('Sad Path: Should call the hasErrored action', async () => {
     window.fetch = jest.fn().mockImplementation(() => {
       Promise.reject(new Error('User Not Found'))
-              .catch(error => error);
+              .catch(error => error)
     })
     const mockAction = {
       type: 'HAS_ERRORED',
       error: TypeError("Cannot read property 'json' of undefined")
     }
 
-    await CreateUserThunk()(mockDispatch).catch( error => error)
+    await LoginUserThunk()(mockDispatch);
 
     expect(mockDispatch).toHaveBeenCalledWith(mockAction);
   })
