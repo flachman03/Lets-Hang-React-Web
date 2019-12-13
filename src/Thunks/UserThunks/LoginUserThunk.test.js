@@ -33,7 +33,8 @@ describe('LoginUserThunk', () => {
 
   it('Sad Path: Should call the hasErrored action', async () => {
     window.fetch = jest.fn().mockImplementation(() => {
-      Promise.reject('User Not Found')
+      Promise.reject(new Error('User Not Found'))
+              .catch(error => error)
     })
     const mockAction = {
       type: 'HAS_ERRORED',
