@@ -1,16 +1,14 @@
 import React from "react";
-import SignUpForm from "./Components/SignUpForm/SignUpForm";
 import LoginForm from "./Components/LoginForm/LoginForm";
+import SignUpForm from "./Components/SignUpForm/SignUpForm";
+import { Route } from "react-router-dom";
 import "./App.css";
 
 function App() {
   return (
     <main>
-      <header className="header">
-        <h1 className="lets-hang">Let's Hang</h1>
-      </header>
-      <LoginForm />
-      {/* <SignUpForm /> */}
+      <Route exact path="/" component={LoginForm} />
+      <Route exact path="/signup" component={SignUpForm} />
     </main>
   );
 }

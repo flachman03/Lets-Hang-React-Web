@@ -13,19 +13,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-.header {
-  display: flex;
-  justify-content: center;
-}
-
-.lets-hang {
-  font-size: 7rem;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  z-index: 1;
-  margin-top: 38vh;
-  color: #77ea7f;
-  font-family: "Poiret One", cursive;
-}
