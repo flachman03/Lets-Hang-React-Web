@@ -44,6 +44,11 @@ $lightPrimary: #c6ffca;
     box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
     box-shadow: 0 1px 6px 0 rgba(119, 234, 127, 0.78);
     opacity: 1;
+	}
+	&:focus {
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+    box-shadow: 0 1px 6px 0 rgba(119, 234, 127, 0.78);
+    opacity: 1;
   }
 }
 

@@ -1,21 +1,6 @@
 $primary: #77ea7f;
 $lightPrimary: #c6ffca;
 
-@keyframes hoverOn {
-  0% {
-    color: black;
-    background-color: $lightPrimary;
-    box-shadow: none;
-    opacity: .8;
-  }
-  100% {
-    color: white;
-    background-color: $primary;
-    box-shadow: 0 1px 6px 0 rgba(119, 234, 127, 0.48);
-    opacity: 1;
-  }
-}
-
 .loginform-wrapper {
   width: 100%;
   height: 100vh;
@@ -69,6 +54,11 @@ $lightPrimary: #c6ffca;
   color: white;
   transition: all .3s;
   &:hover {
+    box-shadow: 0 1px 6px 0 rgba(119, 234, 127, 0.78);
+    opacity: 1;
+  }
+  &:focus {
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
     box-shadow: 0 1px 6px 0 rgba(119, 234, 127, 0.78);
     opacity: 1;
   }
