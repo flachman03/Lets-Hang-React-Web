@@ -26,8 +26,8 @@ export class LoginForm extends React.PureComponent {
   render() {
     return (
       <main className="loginform-wrapper">
-        <h1 className="lets-hang">Let's Hang</h1>
         <form className="loginform">
+        <h1 className="lets-hang">Let's Hang</h1>
           <input
             className="loginform__input"
             id="loginform__input--username"
