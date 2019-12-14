@@ -1,0 +1,106 @@
+$primary: #77ea7f;
+$lightPrimary: #c6ffca;
+
+.loginform-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginform {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 10vh;
+}
+
+.lets-hang {
+  font-size: 7rem;
+  margin-bottom: 30px;
+  padding: 0;
+  color: $primary;
+  font-family: "Poiret One", cursive;
+}
+
+.loginform-wrapper::after {
+  content: "";
+  background: url("https://live.staticflickr.com/734/32630070081_3e4538ac69_k.jpg");
+  background-position: 65% 35%;
+  opacity: 0.6;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+
+.loginform__input {
+  width: 40%;
+  height: 55px;
+  border-radius: 40px;
+  border: 1px solid $primary;
+  background: none;
+  margin-bottom: 15px;
+  outline: none;
+  padding-left: 1%;
+  font-size: 1rem;
+  color: white;
+  transition: all .3s;
+  &:hover {
+    box-shadow: 0 1px 6px 0 rgba(119, 234, 127, 0.78);
+    opacity: 1;
+  }
+  &:focus {
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+    box-shadow: 0 1px 6px 0 rgba(119, 234, 127, 0.78);
+    opacity: 1;
+  }
+}
+
+.loginform__input::placeholder {
+  font-size: 1rem;
+  color: white;
+}
+
+.loginform__submitbtn {
+  width: 25%;
+  height: 55px;
+  border-radius: 40px;
+  border: none;
+  outline: none;
+  margin-top: 10px;
+  background-color: $lightPrimary;
+  font-size: 1rem;
+  font-weight: 700;
+  color: black;
+  opacity: .8;
+  transition: color .3s;
+  transition: all .3s;
+  &:hover {
+    cursor: pointer;
+    color: white;
+    background-color: $primary;
+    box-shadow: 0 1px 6px 0 rgba(119, 234, 127, 0.48);
+    opacity: 1;
+  }
+}
+
+.loginform__message {
+  color: white;
+  font-size: 1rem;
+  font-weight: 100;
+  margin-top: 20px;
+}
+
+.signup-link {
+  color: $primary;
+  font-weight: 700;
+  text-decoration: none;
+}
