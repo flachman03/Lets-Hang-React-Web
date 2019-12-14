@@ -1,7 +1,7 @@
 import React from "react";
 import "./LoginForm.scss";
 import { connect } from "react-redux";
-import { CreateUserThunk } from "../../Thunks/UserThunks/CreateUserThunk";
+import { LoginUserThunk } from "../../Thunks/UserThunks/LoginUserThunk";
 import { NavLink } from "react-router-dom";
 
 export class LoginForm extends React.PureComponent {
@@ -14,18 +14,14 @@ export class LoginForm extends React.PureComponent {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  // handleCreateUser = e => {
-  //   e.preventDefault();
-  //   const user = {
-  //     name: this.state.name,
-  //     userName: this.state.userName,
-  //     email: this.state.email,
-  //     phoneNumber: this.state.phoneNumber,
-  //     password: this.state.password,
-  //     confirmPassword: this.state.confirmPassword
-  //   };
-  //   this.props.createUser(user);
-  // };
+  handleLoginUser = e => {
+    e.preventDefault();
+    const user = {
+      credentials: this.state.userName,
+      password: this.state.password
+    };
+    this.props.LoginUser(user);
+  };
 
   render() {
     return (
@@ -54,7 +50,7 @@ export class LoginForm extends React.PureComponent {
             className="loginform__submitbtn"
             placeholder="Login"
             type="submit"
-            onClick={e => this.handleCreateUser(e)}
+            onClick={e => this.handleLoginUser(e)}
           >
             Login
           </button>
@@ -68,7 +64,7 @@ export class LoginForm extends React.PureComponent {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  createUser: user => dispatch(CreateUserThunk(user))
+  LoginUser: user => dispatch(LoginUserThunk(user))
 });
 
 export default connect(null, mapDispatchToProps)(LoginForm);
