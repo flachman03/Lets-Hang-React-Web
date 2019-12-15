@@ -1,4 +1,4 @@
-export const userEvents = events => ({
-  type: 'USER_EVENTS',
+export const userEvent = events => ({
+  type: 'USER_EVENT',
   data: events
 })

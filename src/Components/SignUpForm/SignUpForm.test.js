@@ -44,7 +44,7 @@ describe('SignUpForm', () => {
   });
 
   it('Should return a form element', () => {
-    expect(wrapper.name()).toEqual('form')
+    expect(wrapper.name()).toEqual('main')
   });
 
   it('Should call the handleOnChange event when the name input changes', () => {

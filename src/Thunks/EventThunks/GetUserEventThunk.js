@@ -1,4 +1,4 @@
-import { userEvents } from '../../Actions/EventActions'
+import { userEvent } from '../../Actions/EventActions'
 import { hasErrored} from '../../Actions/index'
 
 export const GetUserEventThunk = ApiKey => {
@@ -7,7 +7,7 @@ export const GetUserEventThunk = ApiKey => {
     try {
       const response = await fetch(url);
       const event = await response.json();
-      dispatch(userEvents(event));
+      dispatch(userEvent(event));
       return event
     }
     catch(error) {
