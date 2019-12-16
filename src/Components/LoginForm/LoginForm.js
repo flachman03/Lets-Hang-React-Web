@@ -2,7 +2,8 @@ import React from "react";
 import "./LoginForm.scss";
 import { connect } from "react-redux";
 import { LoginUserThunk } from "../../Thunks/UserThunks/LoginUserThunk";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
+
 
 export class LoginForm extends React.PureComponent {
   state = {
@@ -14,13 +15,17 @@ export class LoginForm extends React.PureComponent {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleLoginUser = e => {
+  handleLoginUser = async e => {
     e.preventDefault();
     const user = {
       credentials: this.state.userName,
       password: this.state.password
     };
-    this.props.LoginUser(user);
+    const checkUser = await this.props.LoginUser(user);
+    console.log(checkUser)
+    if (checkUser) {
+      this.props.history.push('/events')
+    }
   };
 
   render() {
@@ -67,4 +72,4 @@ export const mapDispatchToProps = dispatch => ({
   LoginUser: user => dispatch(LoginUserThunk(user))
 });
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default withRouter(connect(null, mapDispatchToProps)(LoginForm));

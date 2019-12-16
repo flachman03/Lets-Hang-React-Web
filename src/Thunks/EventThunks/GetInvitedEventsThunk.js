@@ -6,8 +6,9 @@ export const GetInvitedEventsThunk = ApiKey => {
   return async dispatch => {
     try {
       const response = await fetch(url);
-      const events = response.json();
+      const events = await response.json();
       dispatch(allInvitedEvents(events))
+      return events
     }
     catch(error) {
       dispatch(hasErrored(error))

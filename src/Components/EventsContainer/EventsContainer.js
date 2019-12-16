@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { GetUserEventThunk } from '../../Thunks/EventThunks/GetUserEventThunk'
+import { GetInvitedEventsThunk } from '../../Thunks/EventThunks/GetInvitedEventsThunk';
 
 export class EventsContainer extends React.PureComponent {
   constructor() {
@@ -11,7 +12,10 @@ export class EventsContainer extends React.PureComponent {
   }
 
   async componentDidMount() {
-    const userEvent = await this.props.getUserEvent();
+    const userEvent = await this.props.getUserEvent(this.props.apiKey);
+    const allEvents = await this.props.getAllEvents(this.props.apiKey);
+    console.log(userEvent);
+    console.log(allEvents);
   }
 
   render() {
@@ -26,7 +30,8 @@ export const mapStateToProps = store => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  getUserEvent: ApiKey => dispatch(GetUserEventThunk(ApiKey))
+  getUserEvent: ApiKey => dispatch(GetUserEventThunk(ApiKey)),
+  getAllEvents: ApiKey => dispatch(GetInvitedEventsThunk(ApiKey))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventsContainer);
