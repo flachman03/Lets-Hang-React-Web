@@ -32,9 +32,9 @@ export class LoginForm extends React.PureComponent {
             className="loginform__input"
             id="loginform__input--username"
             type="text"
-            name="username"
+            name="userName"
             placeholder="Username"
-            value={this.state.username}
+            value={this.state.userName}
             onChange={e => this.handleOnChange(e)}
           ></input>
           <input
