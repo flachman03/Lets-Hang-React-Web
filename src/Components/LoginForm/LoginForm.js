@@ -18,8 +18,8 @@ export class LoginForm extends React.PureComponent {
   handleLoginUser = async e => {
     e.preventDefault();
     const user = {
-      credentials: this.state.userName,
-      password: this.state.password
+      Credentials: this.state.userName,
+      Password: this.state.password
     };
     const checkUser = await this.props.LoginUser(user);
     console.log(checkUser)
