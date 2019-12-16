@@ -14,6 +14,7 @@ export const LoginUserThunk = userInfo => {
       }
       const response = await fetch(url, options);
       const user = await response.json();
+      console.log(user);
       dispatch(addUser(user))
       return user
     }
