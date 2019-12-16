@@ -1,0 +1,31 @@
+$primary: #77ea7f;
+$lightPrimary: #c6ffca;
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 15px;
+  top: 0;
+}
+
+.navbar-logo {
+  font-family: "Poiret One", cursive;
+  color: $primary;
+  margin: 0;
+}
+
+.navbar-icon {
+  height: 25px;
+  margin-left: 10px;
+  &:hover {
+    cursor: pointer;
+    opacity: .8;
+  }
+}
+
+.navbar-icons {
+  margin-top: 2px;
+}

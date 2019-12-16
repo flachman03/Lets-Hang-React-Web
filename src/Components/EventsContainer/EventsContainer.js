@@ -1,8 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux'
-import { GetUserEventThunk } from '../../Thunks/EventThunks/GetUserEventThunk'
-import { GetInvitedEventsThunk } from '../../Thunks/EventThunks/GetInvitedEventsThunk';
-import EventCard from '../EventCard/EventCard'
+import React from "react";
+import { connect } from "react-redux";
+import { GetUserEventThunk } from "../../Thunks/EventThunks/GetUserEventThunk";
+import { GetInvitedEventsThunk } from "../../Thunks/EventThunks/GetInvitedEventsThunk";
+import EventCard from "../EventCard/EventCard";
 
 export class EventsContainer extends React.Component {
   constructor() {
@@ -14,23 +14,26 @@ export class EventsContainer extends React.Component {
         accepted: []
       },
       allEvents: []
-    }
+    };
   }
 
   async componentDidMount() {
+    console.log(this.props);
     const userEvent = await this.props.getUserEvent(this.props.apiKey);
     const allEvents = await this.props.getAllEvents(this.props.apiKey);
-    console.log(userEvent)
+    console.log(userEvent);
     this.setState({ userEvent });
-    this.setState({ allEvents })
+    this.setState({ allEvents });
   }
 
   render() {
-    return(
-      <EventCard event={this.state.userEvent.event} 
-                 invited={this.state.userEvent.invited}
-                 accepted={this.state.userEvent.accepted}/>
-    )
+    return (
+      <EventCard
+        event={this.state.userEvent.event}
+        invited={this.state.userEvent.invited}
+        accepted={this.state.userEvent.accepted}
+      />
+    );
   }
 }
 
