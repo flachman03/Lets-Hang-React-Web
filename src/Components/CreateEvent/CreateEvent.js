@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { mapStateToProps } from '../EventsContainer/EventsContainer';
 
 
 export class CreateEvent extends React.PureComponent {
@@ -36,39 +35,44 @@ export class CreateEvent extends React.PureComponent {
 
   render() {
     return(
-      <form>
-        <input
-          type='text'
-          placeholder='Title'
-          name='title'
-          value={this.state.title}
-          onChange={ e => this.handleOnChange(e)}
-          />
-        <input
-          type='text'
-          placeholder='Event Description'
-          name='description'
-          value={this.state.description}
-          onChange={ e => this.handleOnChange(e)}
-          />
-        <input
-          type='text'
-          placeholder='When is your event?'
-          name='eventTime'
-          value={this.state.eventTime}
-          onChange={ e => this.handleOnChange(e)}
-          />
-        <input
-          type='text'
-          placeholder='Where is your event?'
-          name='eventLocation'
-          value={this.state.title}
-          onChange={ e => this.handleOnChange(e)}
-          />
-        <button
-          onClick={ eventInfo => }
-        >Create My Event!</button>
-      </form>
+      <main>
+        <form>
+          <input
+            type='text'
+            placeholder='Title'
+            name='title'
+            value={this.state.title}
+            onChange={ e => this.handleOnChange(e)}
+            />
+          <input
+            type='text'
+            placeholder='Event Description'
+            name='description'
+            value={this.state.description}
+            onChange={ e => this.handleOnChange(e)}
+            />
+          <input
+            type='text'
+            placeholder='When is your event?'
+            name='eventTime'
+            value={this.state.eventTime}
+            onChange={ e => this.handleOnChange(e)}
+            />
+          <input
+            type='text'
+            placeholder='Where is your event?'
+            name='eventLocation'
+            value={this.state.title}
+            onChange={ e => this.handleOnChange(e)}
+            />
+          <button
+            onClick={ e => this.handleSubmit(e)}
+          >Create My Event!</button>
+        </form>
+        <ul>
+          
+        </ul>
+      </main>
     )
   }
 }
