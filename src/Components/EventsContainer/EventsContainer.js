@@ -8,7 +8,11 @@ export class EventsContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      userEvent: {},
+      userEvent: {
+        event: {},
+        invited: [],
+        accepted: []
+      },
       allEvents: []
     }
   }
@@ -23,7 +27,9 @@ export class EventsContainer extends React.Component {
 
   render() {
     return(
-      <EventCard event={this.state.userEvent} />
+      <EventCard event={this.state.userEvent.event} 
+                 invited={this.state.userEvent.invited}
+                 accepted={this.state.userEvent.accepted}/>
     )
   }
 }

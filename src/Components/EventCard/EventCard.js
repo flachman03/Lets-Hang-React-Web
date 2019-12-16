@@ -1,28 +1,16 @@
 import React from 'react';
 
-export class EventCard extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-
-    }
-  }
-
-  componentDidMount() {
-    console.log(this.props)
-  }
-
-  render() {
+export const EventCard = ({event}) => {
+    console.log(event)
     return(
       <article>
-        <h3>{this.props.event.title}</h3>
-        <h5>{this.props.creator}</h5>
-        <p>{this.props.event.description}</p>
-        <p>{this.props.event.eventTime}</p>
-        <p>{this.props.event.eventLocation}</p>
+        <h3>{event.title}</h3>
+        <h5>{event.creator}</h5>
+        <p>{event.description}</p>
+        <p>{event.eventTime}</p>
+        <p>{event.eventLocation}</p>
       </article>
     )
-  }
 }
 
 export default EventCard;
