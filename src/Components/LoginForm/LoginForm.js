@@ -22,7 +22,6 @@ export class LoginForm extends React.PureComponent {
       password: this.state.password
     };
     const checkUser = await this.props.LoginUser(user);
-    console.log(checkUser)
     if (checkUser) {
       this.props.history.push('/events')
     }
