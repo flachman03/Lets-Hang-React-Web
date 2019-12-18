@@ -2,7 +2,7 @@ import { addFriends } from '../../Actions/FriendActions'
 import { hasErrored } from '../../Actions';
 
 export const getFriendsThunk = apiKey => {
-  const url = `https://localhost5001/api/v1/user/friends?=ApiKey=${apiKey}`
+  const url = `https://localhost:5001/api/v1/user/friends?ApiKey=${apiKey}`
   
   return async dispatch => {
     try {

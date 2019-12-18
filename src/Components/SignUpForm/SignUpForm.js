@@ -2,6 +2,7 @@ import React from 'react';
 import './SignUpForm.scss'
 import { connect } from 'react-redux'
 import {CreateUserThunk} from '../../Thunks/UserThunks/CreateUserThunk'
+import { withRouter } from 'react-router-dom'
 
 
 export class SignUpForm extends React.PureComponent {
@@ -21,7 +22,7 @@ export class SignUpForm extends React.PureComponent {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  handleCreateUser = (e) => {
+  handleCreateUser = async (e) => {
     e.preventDefault()
     const user = {
       name: this.state.name,
@@ -31,7 +32,10 @@ export class SignUpForm extends React.PureComponent {
       password: this.state.password,
       confirmPassword: this.state.confirmPassword
     }
-    this.props.createUser(user)
+    const checkUser = await this.props.createUser(user)
+    if(checkUser) {
+      this.props.history.push('/onboarding')
+    }
   }
   render(){
     return (
@@ -110,4 +114,4 @@ export const mapDispatchToProps = dispatch => ({
   createUser: (user) => dispatch(CreateUserThunk(user))
 });
 
-export default connect(null, mapDispatchToProps)(SignUpForm);
+export default withRouter(connect(null, mapDispatchToProps)(SignUpForm));

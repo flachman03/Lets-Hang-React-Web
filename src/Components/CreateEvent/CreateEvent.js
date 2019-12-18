@@ -1,8 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { getFriendsThunk } from '../../Thunks/FriendThunks/getFriendsThunk'
+import 'uuidv4';
+import { uuid } from 'uuidv4';
 
 
-export class CreateEvent extends React.PureComponent {
+export class CreateEvent extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -12,12 +15,30 @@ export class CreateEvent extends React.PureComponent {
       eventTime: '',
       eventLocation: '',
       userName: '',
-      invited: []
+      invited: [],
+      friends: [],
+    }
+  }
+
+  async componentDidMount() {
+    if(this.props.user)
+    {
+      const friends = await this.props.getFriends(this.props.user.apiKey);
+      this.setState({ friends, userId: this.props.user.userId } )
     }
   }
 
   handleOnChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
+  }
+
+  handleInviteFriend = id => {
+    if(this.state.invited.includes(id)) {
+      let filterInvited = this.state.invited.filter( InvitedId => InvitedId !== id)
+      this.setState({invited: filterInvited})
+    } else {
+      this.setState({invited: [...this.state.invited, id]})
+    }
   }
 
   handleSubmit = e => {
@@ -33,6 +54,15 @@ export class CreateEvent extends React.PureComponent {
     }
   }
 
+  displayFriends = () => {
+    let displayFriends = this.state.friends.map( friend => {
+      return <li
+              onClick={ e => this.handleInviteFriend(friend.userId)}
+              key={uuid()}
+              >{friend.name}</li>
+    })
+    return displayFriends
+  }
   render() {
     return(
       <main>
@@ -62,7 +92,7 @@ export class CreateEvent extends React.PureComponent {
             type='text'
             placeholder='Where is your event?'
             name='eventLocation'
-            value={this.state.title}
+            value={this.state.eventLocation}
             onChange={ e => this.handleOnChange(e)}
             />
           <button
@@ -70,15 +100,18 @@ export class CreateEvent extends React.PureComponent {
           >Create My Event!</button>
         </form>
         <ul>
-          
+          {this.state.friends && this.displayFriends()}
         </ul>
       </main>
     )
   }
 }
 
-const mapStateToProps = store => ({
+export const mapStateToProps = store => ({
   user: store.user
 })
 
-export default connect(mapStateToProps, null)(CreateEvent)
+export const mapDispatchToProps = dispatch => ({
+  getFriends: apiKey => dispatch(getFriendsThunk(apiKey))
+})
+export default connect(mapStateToProps, mapDispatchToProps)(CreateEvent)

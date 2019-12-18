@@ -21,10 +21,9 @@ export class LoginForm extends React.PureComponent {
       Credentials: this.state.userName,
       Password: this.state.password
     };
-    const checkUser = await this.props.LoginUser(user);
-    console.log(checkUser)
+    const checkUser  = await this.props.LoginUser(user);
     if (checkUser) {
-      this.props.history.push('/events')
+      this.props.history.push('/createevent')
     }
   };
 
@@ -67,7 +66,6 @@ export class LoginForm extends React.PureComponent {
     );
   }
 }
-
 export const mapDispatchToProps = dispatch => ({
   LoginUser: user => dispatch(LoginUserThunk(user))
 });
