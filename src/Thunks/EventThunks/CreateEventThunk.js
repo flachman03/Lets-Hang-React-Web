@@ -13,8 +13,8 @@ export const CreateEventThunk = (event, userId) => {
         body: JSON.stringify(event)
       }
       const response = await fetch(url, options);
-      const event = await response.json();
-      dispatch(userEvent(event));
+      const newEvent = await response.json();
+      dispatch(userEvent(newEvent));
       return event
     }
     catch(error) {

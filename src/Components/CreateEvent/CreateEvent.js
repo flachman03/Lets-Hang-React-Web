@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { getFriendsThunk } from '../../Thunks/FriendThunks/getFriendsThunk'
 import 'uuidv4';
 import { uuid } from 'uuidv4';
-
+import { CreateEventThunk } from '../../Thunks/EventThunks/CreateEventThunk';
+import { withRouter } from 'react-router-dom'
 
 export class CreateEvent extends React.Component {
   constructor() {
@@ -41,7 +42,7 @@ export class CreateEvent extends React.Component {
     }
   }
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
     const eventInfo = {
       userId: this.props.user.userId,
@@ -51,6 +52,10 @@ export class CreateEvent extends React.Component {
       eventLocation: this.state.eventLocation,
       userName: this.props.user.userName,
       invited: this.state.invited
+    }
+    const newEvent = await this.props.createEvent(eventInfo, this.props.user.userId)
+    if(newEvent) {
+      this.props.history.push('/homepage')
     }
   }
 
@@ -112,6 +117,7 @@ export const mapStateToProps = store => ({
 })
 
 export const mapDispatchToProps = dispatch => ({
-  getFriends: apiKey => dispatch(getFriendsThunk(apiKey))
+  getFriends: apiKey => dispatch(getFriendsThunk(apiKey)),
+  createEvent: (event, userId) => dispatch(CreateEventThunk(event, userId))
 })
-export default connect(mapStateToProps, mapDispatchToProps)(CreateEvent)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateEvent))
