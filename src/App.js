@@ -5,6 +5,7 @@ import NavBar from "./Components/NavBar/NavBar";
 import EventsContainer from "./Components/EventsContainer/EventsContainer";
 import { Route } from "react-router-dom";
 import "./App.css";
+import CreateEvent  from "./Components/CreateEvent/CreateEvent";
 
 function App() {
   return (

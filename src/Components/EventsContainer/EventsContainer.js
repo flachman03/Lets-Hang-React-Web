@@ -21,7 +21,6 @@ export class EventsContainer extends React.Component {
     console.log(this.props);
     const userEvent = await this.props.getUserEvent(this.props.apiKey);
     const allEvents = await this.props.getAllEvents(this.props.apiKey);
-    console.log(userEvent);
     this.setState({ userEvent });
     this.setState({ allEvents });
   }
